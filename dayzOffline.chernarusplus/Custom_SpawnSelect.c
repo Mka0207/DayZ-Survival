@@ -1,7 +1,4 @@
 //Custom spawn point select
-const float TELEPORT_COOLDOWN = 120;
-protected float    m_TeleportCheckTimer = 0.0;
-
 void OnPlayerTeleportTick(PlayerBase player, float curTime)
 {
     m_TeleportCheckTimer += curTime;    
@@ -9,22 +6,23 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
     if ( m_TeleportCheckTimer > TELEPORT_COOLDOWN )
     {
         m_TeleportCheckTimer = 0;
-
-        vector PlayerPos;
-        player.GetPosition() = PlayerPos;
-        if ( PlayerPos[0] > 4129.94 && PlayerPos[0] < 4134.77 )
-        {
-            if ( PlayerPos[3] > 14654.5 && PlayerPos[3] < 14662 )
-            {
-                if ( GetGame().IsServer() )
-                {
-                    player.SetPosition(Vector(2790, 0, 2016));
-                }
-            }
-        }
-        
+        ref array<Object> players = new array<Object>;
+		
+		GetGame().GetObjectsAtPosition( player.GetPosition(), 4.7, players, NULL );
+		for ( int i = 0; i < players.Count(); i++ )
+		{
+			Object player_ent = players.Get( i );
+			if ( player_ent ) 
+			{
+				if ( player_ent.IsMan() )
+				{    
+					player.SetPosition( Vector( 2790, 0, 2016 ) );
+				}
+			}
+		}
     }
 }
+
 void AddBuildings()
 {
 	

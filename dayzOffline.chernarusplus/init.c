@@ -70,6 +70,9 @@ class CustomMission: MissionServer
 		itemBs = ItemBase.Cast(itemEnt);
 	}
 	
+	const float TELEPORT_COOLDOWN = 10;
+	protected float    m_TeleportCheckTimer = 0.0;
+	
 	override void TickScheduler(float timeslice)
     {
         GetGame().GetWorld().GetPlayerList(m_Players);
