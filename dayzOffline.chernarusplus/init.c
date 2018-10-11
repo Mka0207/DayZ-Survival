@@ -1,4 +1,6 @@
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnSelect.c"
+//#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnPoints.c"
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_Buildings.c"
 void main()
 {
 

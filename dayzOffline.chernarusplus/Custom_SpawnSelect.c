@@ -1,11 +1,14 @@
 //Custom spawn point select
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnPoints.c"
+
+
+TVectorArray RandomCherno = ChernoSpawns();
 const float TELEPORT_COOLDOWN = 12;
 protected float    m_TeleportCheckTimer = 0.0;
-void OnPlayerTeleportTick(PlayerBase player, float curTime)
 
+void OnPlayerTeleportTick(PlayerBase player, float curTime)
 {
     m_TeleportCheckTimer += curTime;    
-    
     if ( m_TeleportCheckTimer > TELEPORT_COOLDOWN )
     {
         m_TeleportCheckTimer = 0;
@@ -19,12 +22,15 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
 			{
 				if ( player_ent.IsMan() )
 				{    
-					player.SetPosition( Vector( 8027.27, 9.226, 3218.06 ) );
+					player_ent.SetPosition( RandomCherno.GetRandomElement() );
 				}
 			}
 		}
     }
 }
+
+
+
 
 void AddSpawnStuff()
 {
@@ -396,6 +402,5 @@ void AddSpawnStuff()
 	m_wall8.SetOrientation(wall8_dir);
 	
 
-
-	
 }
+
