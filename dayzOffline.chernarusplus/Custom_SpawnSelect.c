@@ -1,5 +1,8 @@
 //Custom spawn point select
+const float TELEPORT_COOLDOWN = 12;
+protected float    m_TeleportCheckTimer = 0.0;
 void OnPlayerTeleportTick(PlayerBase player, float curTime)
+
 {
     m_TeleportCheckTimer += curTime;    
     
@@ -8,7 +11,7 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
         m_TeleportCheckTimer = 0;
         ref array<Object> players = new array<Object>;
 		
-		GetGame().GetObjectsAtPosition( player.GetPosition(), 4.7, players, NULL );
+		GetGame().GetObjectsAtPosition( Vector(4132.42, 352.4, 14657.9), 4.7, players, NULL );
 		for ( int i = 0; i < players.Count(); i++ )
 		{
 			Object player_ent = players.Get( i );
@@ -16,7 +19,7 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
 			{
 				if ( player_ent.IsMan() )
 				{    
-					player.SetPosition( Vector( 2790, 0, 2016 ) );
+					player.SetPosition( Vector( 8027.27, 9.226, 3218.06 ) );
 				}
 			}
 		}
@@ -51,6 +54,7 @@ void AddBuildings()
 	
 	//Green chemlight on map	
 	ItemBase m_spwn2;
+	ItemBase m_spwn22;
     vector spwn2_pos;
     vector spwn2_dir;
    
@@ -63,10 +67,13 @@ void AddBuildings()
     spwn2_dir[2] = -176.692;
 
 	m_spwn2 = g_Game.CreateObject("Chemlight_Green", spwn2_pos, false);
+	m_spwn22 = g_Game.CreateObject("Armband_Green", spwn2_pos, false);	
 	m_spwn2.SetOrientation(spwn2_dir);
 	m_spwn2.GetCompEM().SwitchOn();
 	m_spwn2.SetPosition(spwn2_pos); 
 	m_spwn2.SetTakeable(false);
+	
+
 
 	
 	
@@ -75,9 +82,9 @@ void AddBuildings()
     vector spwn3_pos;
     vector spwn3_dir;
    
-    spwn3_pos[0] = 4132.37;
+    spwn3_pos[0] = 4132.42;
     spwn3_pos[1] = 352.399;
-    spwn3_pos[2] = 14656.6;
+    spwn3_pos[2] = 14657.9;
  
     spwn3_dir[0] = 0;
     spwn3_dir[1] = 0;

@@ -1,4 +1,4 @@
-
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnSelect.c"
 void main()
 {
 
@@ -61,7 +61,7 @@ class CustomMission: MissionServer
 		EntityAI itemEnt;
 		ItemBase itemBs;
 		
-		itemEnt = player.GetInventory().CreateInInventory("Rag");
+		itemEnt = player.GetInventory().CreateInInventory("StoneKnife");
 		itemBs = ItemBase.Cast(itemEnt);
 		itemBs.SetQuantity(4);
 		SetRandomHealth(itemEnt);
