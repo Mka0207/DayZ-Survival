@@ -26,7 +26,7 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
     }
 }
 
-void AddBuildings()
+void AddSpawnStuff()
 {
 	
 	//Green shed
