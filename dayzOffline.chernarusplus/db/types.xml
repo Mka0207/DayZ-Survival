@@ -7788,8 +7788,8 @@
         <category name="clothes"/>
         <tag name="shelves"/>
         <usage name="Industrial"/>
-</type>
-<type name="DirtBikeHelmet_Chernarus">
+	</type>
+	<type name="DirtBikeHelmet_Chernarus">
         <nominal>50</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
@@ -7801,8 +7801,8 @@
         <category name="clothes"/>
         <tag name="shelves"/>
         <usage name="Industrial"/>
-</type>
-<type name="DirtBikeHelmet_Khaki">
+	</type>
+	<type name="DirtBikeHelmet_Khaki">
         <nominal>50</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
@@ -7814,8 +7814,8 @@
         <category name="clothes"/>
         <tag name="shelves"/>
         <usage name="Industrial"/>
-</type>
-<type name="DirtBikeHelmet_Police">
+	</type>
+	<type name="DirtBikeHelmet_Police">
         <nominal>50</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
@@ -7827,8 +7827,8 @@
         <category name="clothes"/>
         <tag name="shelves"/>
         <usage name="Industrial"/>
-</type>
-<type name="DirtBikeHelmet_Red">
+	</type>
+	<type name="DirtBikeHelmet_Red">
         <nominal>50</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
@@ -7840,8 +7840,8 @@
         <category name="clothes"/>
         <tag name="shelves"/>
         <usage name="Industrial"/>
-</type>
-<type name="DirtBikeHelmet_Black">
+	</type>
+	<type name="DirtBikeHelmet_Black">
         <nominal>50</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
