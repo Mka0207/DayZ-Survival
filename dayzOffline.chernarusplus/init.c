@@ -1,6 +1,8 @@
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnSelect.c"
 //#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnPoints.c"
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_Buildings.c"
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_Adverts.c"
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_CacheBase.c"
 void main()
 {
 
@@ -35,6 +37,13 @@ void main()
 
 class CustomMission: MissionServer
 {	
+	ref CustomEventsSurvival curr_event;
+	
+	void CustomMission()
+	{
+		curr_event = new CustomEventsSurvival();
+	}
+	
 	void SetRandomHealth(EntityAI itemEnt)
 	{
 		int rndHlt = Math.RandomInt(40,100);
@@ -95,6 +104,15 @@ class CustomMission: MissionServer
             m_currentPlayer++;
         }
     }
+
+	override void OnUpdate(float timeslice)
+	{
+		super.OnUpdate( timeslice );
+	
+		//Custom
+		curr_event.OnEventTick(timeslice);
+		OnTickAdverts( timeslice );
+	}	
 };
   
 Mission CreateCustomMission(string path)

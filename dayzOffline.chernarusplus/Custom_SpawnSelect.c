@@ -64,7 +64,7 @@ void AddSpawnStuff()
     vector spwn2_pos;
     vector spwn2_dir;
    
-    spwn2_pos[0] = 4118.24;
+    spwn2_pos[0] = 4118.32;
     spwn2_pos[1] = 350.604;
     spwn2_pos[2] = 14650.1;
  
@@ -77,7 +77,9 @@ void AddSpawnStuff()
 	m_spwn2.SetOrientation(spwn2_dir);
 	m_spwn2.GetCompEM().SwitchOn();
 	m_spwn2.SetPosition(spwn2_pos); 
+	m_spwn22.SetPosition(spwn2_pos); 
 	m_spwn2.SetTakeable(false);
+	m_spwn22.SetTakeable(false);
 	
 
 
@@ -125,10 +127,11 @@ void AddSpawnStuff()
 	
 	 //Blue chemlight on map
 	ItemBase m_spwn5;
+	ItemBase m_spwn55;
     vector spwn5_pos;
     vector spwn5_dir;
 
-    spwn5_pos[0] = 4118.24;
+    spwn5_pos[0] = 4118.45;
     spwn5_pos[1] = 350.498;
     spwn5_pos[2] = 14650.5;
  
@@ -137,10 +140,13 @@ void AddSpawnStuff()
     spwn5_dir[2] = -63.5597;
 
 	m_spwn5 = g_Game.CreateObject("Chemlight_Blue", spwn5_pos, false);
-	m_spwn5.SetOrientation(spwn5_dir);
+	m_spwn55 = g_Game.CreateObject("Armband_Blue", spwn5_pos, false);
+	m_spwn5.SetOrientation(spwn2_dir);
 	m_spwn5.GetCompEM().SwitchOn();
 	m_spwn5.SetPosition(spwn5_pos);
+	m_spwn55.SetPosition(spwn5_pos);
 	m_spwn5.SetTakeable(false);
+	m_spwn55.SetTakeable(false);
 	
 	
 	 //Blue chemlight in shed
@@ -186,6 +192,7 @@ void AddSpawnStuff()
 	
 	//Red chemlight on map
 	ItemBase m_spwn8;
+	ItemBase m_spwn88;
     vector spwn8_pos;
     vector spwn8_dir;
    
@@ -198,10 +205,13 @@ void AddSpawnStuff()
     spwn8_dir[2] = 59.0782
 
 	m_spwn8 = g_Game.CreateObject("Chemlight_Red", spwn8_pos, false);
-	m_spwn8.SetOrientation(spwn8_dir);
+	m_spwn88 = g_Game.CreateObject("Armband_Red", spwn8_pos, false);	
+	m_spwn8.SetOrientation(spwn2_dir);
 	m_spwn8.GetCompEM().SwitchOn();
 	m_spwn8.SetPosition(spwn8_pos); 
+	m_spwn88.SetPosition(spwn8_pos); 
 	m_spwn8.SetTakeable(false);
+	m_spwn88.SetTakeable(false);
 	
 	
 	 //Red chemlight in shed

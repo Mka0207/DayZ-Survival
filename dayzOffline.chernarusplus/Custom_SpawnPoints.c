@@ -1,4 +1,4 @@
-/* TVectorArray ChernoSpawns()
+TVectorArray ChernoSpawns()
 {
 return { 
 "8362.24 6.38941 2454.3",
@@ -23,14 +23,16 @@ return {
 "5897.71 79.0192 2787.13",
 "6031.63 48.9171 2980.82",
 "6399.15 55.7946 3015.65" };
-} */
-TVectorArray ChernoSpawns()
+}
+/* TVectorArray ChernoSpawns()
 {
 return { 
 "1736 451.8 13731.4" };
-}
+} */
 
-/* TVectorArray ElektroSpawns = { 
+TVectorArray ElektroSpawns()
+{
+return {
 "13056.1 0 3257.64",
 "9177.73 0 1925.26",
 "9477.68 0 1836.59",
@@ -56,8 +58,11 @@ return {
 "12005.4 0 3638.53",
 "13240.4 0 3987.49",
 "12783.8 0 3673.45"};
+}
 
-TVectorArray EastSpawns = {
+TVectorArray EastSpawns()
+{
+return {
 "13947.8 0 11252.7",
 "13902.2 0 11204.8",
 "13745.9 0 11240.4",
@@ -91,8 +96,11 @@ TVectorArray EastSpawns = {
 "14264.1 0 13057",
 "14345.9 0 13355.1",
 "14099.8 0 13422.9"};
+}
 
-TVectorArray RandoSpawns = { 
+TVectorArray RandoSpawns()
+{
+return {
 "4423.95 0 2219.26",
 "4324.22 0 2273.63",
 "4309.67 0 2313.65",
@@ -197,4 +205,5 @@ TVectorArray RandoSpawns = {
 "12714.8 0 8073.67",
 "14264.1 0 13057",
 "14345.9 0 13355.1",
-"14099.8 0 13422.9"}; */
+"14099.8 0 13422.9"}; 
+}
