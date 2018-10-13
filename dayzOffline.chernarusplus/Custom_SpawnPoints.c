@@ -1,4 +1,4 @@
-TVectorArray ChernoSpawns()
+/* TVectorArray ChernoSpawns()
 {
 return { 
 "8362.24 6.38941 2454.3",
@@ -23,6 +23,11 @@ return {
 "5897.71 79.0192 2787.13",
 "6031.63 48.9171 2980.82",
 "6399.15 55.7946 3015.65" };
+} */
+TVectorArray ChernoSpawns()
+{
+return { 
+"1736 451.8 13731.4" };
 }
 
 /* TVectorArray ElektroSpawns = { 

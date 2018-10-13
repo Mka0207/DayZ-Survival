@@ -63,14 +63,12 @@ class CustomMission: MissionServer
 */
 		EntityAI itemEnt;
 		ItemBase itemBs;
-		
-		itemEnt = player.GetInventory().CreateInInventory("StoneKnife");
-		itemBs = ItemBase.Cast(itemEnt);
-		itemBs.SetQuantity(4);
-		SetRandomHealth(itemEnt);
+		Magazine mag = player.GetHumanInventory().CreateInInventory("Mag_IJ70_8Rnd");
+		Weapon wpn = player.GetHumanInventory().CreateInHands("MakarovIJ70");
+		player.GetWeaponManager().AttachMagazine(mag);
+		player.GetInventory().CreateInInventory("StoneKnife");
 
-		itemEnt = player.GetInventory().CreateInInventory("RoadFlare");
-		itemBs = ItemBase.Cast(itemEnt);
+
 	}
 	
 	const float TELEPORT_COOLDOWN = 10;
