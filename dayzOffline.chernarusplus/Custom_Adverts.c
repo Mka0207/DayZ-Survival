@@ -10,6 +10,7 @@ TStringArray Timed_Adverts()
 	"Support Us @ fwkzt.com/donate",
 	"Maintained and developed by FWKZT.com",
 	"Server Changelog posted on discord.",
+	"Warning: Loot has been increased, but so have the threats! There are more zombies and wolves in the world!",
 	"Want to tell us we suck? Tell us we don't? Join our discord to post feedback of suggestions! discord.gg/npTNKeM",
 	"We also have a deathmatch server! Check our discord for info: discord.gg/npTNKeM",
 	"Server restarts every 4 hours!"};

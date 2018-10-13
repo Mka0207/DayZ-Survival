@@ -28,7 +28,8 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
 		}
     }
 } */
-
+TVectorArray RandomCherno = ChernoSpawns();
+TVectorArray RandomElectro = ElectroSpawns();
 class SpawnHub
 {
 	const float TELEPORT_COOLDOWN = 10;
