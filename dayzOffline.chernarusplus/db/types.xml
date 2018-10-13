@@ -8207,4 +8207,74 @@
         <usage name="Town"/>
         <usage name="Village"/>
 	</type>
+	    <type name="Chemlight_Blue">
+        <nominal>30</nominal>
+        <lifetime>21600</lifetime>
+        <restock>0</restock>
+        <min>25</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<tag name="shelves"/>
+        <usage name="Military"/>
+		<usage name="Industrial"/>
+		<usage name="Town"/>
+    </type>
+	<type name="Chemlight_Red">
+        <nominal>30</nominal>
+        <lifetime>21600</lifetime>
+        <restock>0</restock>
+        <min>25</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<tag name="shelves"/>
+        <usage name="Military"/>
+		<usage name="Industrial"/>
+		<usage name="Town"/>
+    </type>
+	<type name="Chemlight_Green">
+        <nominal>30</nominal>
+        <lifetime>21600</lifetime>
+        <restock>0</restock>
+        <min>25</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<tag name="shelves"/>
+        <usage name="Military"/>
+		<usage name="Industrial"/>
+		<usage name="Town"/>
+    </type>
+	<type name="Chemlight_Yellow">
+        <nominal>30</nominal>
+        <lifetime>21600</lifetime>
+        <restock>0</restock>
+        <min>25</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<tag name="shelves"/>
+        <usage name="Military"/>
+		<usage name="Industrial"/>
+		<usage name="Town"/>
+    </type>
+    <type name="Chemlight_White">
+        <nominal>30</nominal>
+        <lifetime>21600</lifetime>
+        <restock>0</restock>
+        <min>25</min>
+        <quantmin>-1</quantmin>
+        <quantmax>-1</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<tag name="shelves"/>
+        <usage name="Military"/>
+		<usage name="Industrial"/>
+		<usage name="Town"/>
+    </type>
 </types>
