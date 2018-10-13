@@ -38,10 +38,12 @@ void main()
 class CustomMission: MissionServer
 {	
 	ref CustomEventsSurvival curr_event;
+	ref SpawnHub spwn_hub;
 	
 	void CustomMission()
 	{
 		curr_event = new CustomEventsSurvival();
+		spwn_hub = new SpawnHub();
 	}
 	
 	void SetRandomHealth(EntityAI itemEnt)
@@ -80,37 +82,13 @@ class CustomMission: MissionServer
 
 	}
 	
-	const float TELEPORT_COOLDOWN = 10;
-	protected float    m_TeleportCheckTimer = 0.0;
-	
-	override void TickScheduler(float timeslice)
-    {
-        GetGame().GetWorld().GetPlayerList(m_Players);
-        if( m_Players.Count() == 0 ) return;
-        for(int i = 0; i < SCHEDULER_PLAYERS_PER_TICK; i++)
-        {
-            if(m_currentPlayer >= m_Players.Count() )
-            {
-                m_currentPlayer = 0;
-            }
-            //PrintString(m_currentPlayer.ToString());
-            PlayerBase currentPlayer = PlayerBase.Cast(m_Players.Get(m_currentPlayer));
-            
-            currentPlayer.OnTick();
-			
-			//Custom
-			OnPlayerTeleportTick(currentPlayer, timeslice)
-			
-            m_currentPlayer++;
-        }
-    }
-
 	override void OnUpdate(float timeslice)
 	{
 		super.OnUpdate( timeslice );
 	
 		//Custom
 		curr_event.OnEventTick(timeslice);
+		spwn_hub.OnHubTick(timeslice);
 		OnTickAdverts( timeslice );
 	}	
 };

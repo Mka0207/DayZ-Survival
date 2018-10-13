@@ -2,8 +2,8 @@
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnPoints.c"
 
 
-TVectorArray RandomCherno = ChernoSpawns();
-const float TELEPORT_COOLDOWN = 12;
+/* TVectorArray RandomCherno = ChernoSpawns();
+const float TELEPORT_COOLDOWN = 10;
 protected float    m_TeleportCheckTimer = 0.0;
 
 void OnPlayerTeleportTick(PlayerBase player, float curTime)
@@ -27,10 +27,60 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
 			}
 		}
     }
+} */
+
+class SpawnHub
+{
+	const float TELEPORT_COOLDOWN = 10;
+	protected float m_TeleportCheckTimer = 0.0;
+
+	void SpawnHub()
+	{
+		
+	}
+	
+	void ~SpawnHub()
+	{
+		
+	}
+	
+	void OnHubTick(float curTime)
+	{
+		m_TeleportCheckTimer += curTime;    
+		if ( m_TeleportCheckTimer > TELEPORT_COOLDOWN )
+		{
+			m_TeleportCheckTimer = 0;
+			
+			DoTeleport( "Cherno", "4132.42 352.4 14657.9", 4.7 );
+			DoTeleport( "Electro", "4132.97 352.45 14644.2", 4.7 );
+		}
+	}
+	
+	void DoTeleport( string LocationName, vector HubLocation, float HubRadius )
+	{
+		ref array<Object> players = new array<Object>;
+		GetGame().GetObjectsAtPosition( HubLocation, HubRadius, players, NULL );
+		for ( int i = 0; i < players.Count(); i++ )
+		{
+			Object player_ent = players.Get( i );
+			if ( player_ent ) 
+			{
+				if ( player_ent.IsMan() )
+				{    
+					if ( LocationName == "Cherno" )
+					{
+						player_ent.SetPosition( RandomCherno.GetRandomElement() );
+					}
+					
+					if ( LocationName == "Electro" )
+					{
+						player_ent.SetPosition( RandomElectro.GetRandomElement() );
+					}
+				}
+			}
+		}	
+	}
 }
-
-
-
 
 void AddSpawnStuff()
 {
