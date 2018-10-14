@@ -28,8 +28,8 @@ return {
 /* TVectorArray ChernoSpawns() //debugging spawn, currently at skalitsky
 {
 return { 
-"12997 5.9 3810" };
-}  */
+"1736 451 13731" }; */
+}  
 
 TVectorArray ElectroSpawns()
 {

@@ -30,8 +30,8 @@ void main()
 	
 	weather.SetWindMaximumSpeed(15);
 	weather.SetWindFunctionParams(0.1, 0.3, 50);
-	AddBuildings()
-	AddSpawnStuff()
+	AddBuildings();
+	AddSpawnStuff();
 	
 }
 
@@ -44,7 +44,8 @@ class CustomMission: MissionServer
 	{
 		curr_event = new CustomEventsSurvival();
 		spwn_hub = new SpawnHub();
-	}
+	
+	} 
 	
 	void SetRandomHealth(EntityAI itemEnt)
 	{
@@ -55,7 +56,7 @@ class CustomMission: MissionServer
 	override PlayerBase CreateCharacter(PlayerIdentity identity, vector pos, ParamsReadContext ctx, string characterName)
 	{
 		Entity playerEnt;
-		playerEnt = GetGame().CreatePlayer(identity, characterName, pos, 0, "NONE");//Creates random player
+		playerEnt = GetGame().CreatePlayer(identity, characterName, "4121 0 14650", 0, "NONE");//Creates random player
 		Class.CastTo(m_player, playerEnt);
 		
 		GetGame().SelectPlayer(identity, m_player);
@@ -72,13 +73,20 @@ class CustomMission: MissionServer
 		EntityAI item2 = player.GetInventory().CreateInInventory(pantsArray.GetRandomElement());
 		EntityAI item3 = player.GetInventory().CreateInInventory(shoesArray.GetRandomElement());
 */
-		EntityAI itemEnt;
+/* 		EntityAI itemEnt;
 		ItemBase itemBs;
 		Magazine mag = player.GetHumanInventory().CreateInInventory("Mag_IJ70_8Rnd");
 		Weapon wpn = player.GetHumanInventory().CreateInHands("MakarovIJ70");
 		player.GetWeaponManager().AttachMagazine(mag);
-		player.GetInventory().CreateInInventory("StoneKnife");
-
+		player.GetInventory().CreateInInventory("StoneKnife"); */
+		
+		EntityAI itemEnt;
+		ItemBase itemBs;
+		
+		itemEnt = player.GetInventory().CreateInInventory("Rag");
+		itemBs = ItemBase.Cast(itemEnt);
+		itemBs.SetQuantity(4);
+		player.GetStatWater().Set(700);
 
 	}
 	
@@ -87,7 +95,7 @@ class CustomMission: MissionServer
 		super.OnUpdate( timeslice );
 	
 		//Custom
-		curr_event.OnEventTick(timeslice);
+		//curr_event.OnEventTick(timeslice);
 		spwn_hub.OnHubTick(timeslice);
 		OnTickAdverts( timeslice );
 	}	

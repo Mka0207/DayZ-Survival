@@ -7562,11 +7562,11 @@
         <value name="Tier3"/>
         <value name="Tier4"/>
     </type>
-	<type name="Refridgerator">
-        <nominal>60</nominal>
+	<type name="CableReel">
+        <nominal>90</nominal>
         <lifetime>7200</lifetime>
         <restock>0</restock>
-        <min>40</min>
+        <min>50</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -7574,7 +7574,7 @@
         <category name="tools"/>
         <usage name="Industrial"/>
 	</type>
-	<type name="CableReel">
+	<type name="CanisterGasoline">
         <nominal>90</nominal>
         <lifetime>7200</lifetime>
         <restock>0</restock>
@@ -7720,7 +7720,7 @@
         <usage name="Police"/>
 	</type>
 	<type name="DirtBikeHelmet_Green">
-        <nominal>50</nominal>
+        <nominal>30</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
         <min>25</min>
@@ -7733,23 +7733,10 @@
         <usage name="Industrial"/>
 	</type>
 	<type name="DirtBikeHelmet_Chernarus">
-        <nominal>50</nominal>
+        <nominal>20</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
-        <min>25</min>
-        <quantmin>-1</quantmin>
-        <quantmax>-1</quantmax>
-        <cost>100</cost>
-        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
-        <category name="clothes"/>
-        <tag name="shelves"/>
-        <usage name="Industrial"/>
-	</type>
-	<type name="DirtBikeHelmet_Khaki">
-        <nominal>50</nominal>
-        <lifetime>5600</lifetime>
-        <restock>0</restock>
-        <min>25</min>
+        <min>15</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
@@ -7759,7 +7746,7 @@
         <usage name="Industrial"/>
 	</type>
 	<type name="DirtBikeHelmet_Police">
-        <nominal>50</nominal>
+        <nominal>30</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
         <min>25</min>
@@ -7772,7 +7759,7 @@
         <usage name="Industrial"/>
 	</type>
 	<type name="DirtBikeHelmet_Red">
-        <nominal>50</nominal>
+        <nominal>30</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
         <min>25</min>
@@ -7785,7 +7772,7 @@
         <usage name="Industrial"/>
 	</type>
 	<type name="DirtBikeHelmet_Black">
-        <nominal>50</nominal>
+        <nominal>30</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
         <min>25</min>
@@ -7798,7 +7785,7 @@
         <usage name="Industrial"/>
 	</type>
 	<type name="DirtBikeHelmet_Blue">
-        <nominal>50</nominal>
+        <nominal>30</nominal>
         <lifetime>5600</lifetime>
         <restock>0</restock>
         <min>25</min>

@@ -30,6 +30,8 @@ void OnPlayerTeleportTick(PlayerBase player, float curTime)
 } */
 TVectorArray RandomCherno = ChernoSpawns();
 TVectorArray RandomElectro = ElectroSpawns();
+TVectorArray RandomEast = EastSpawns();
+TVectorArray RandomRando = RandoSpawns();
 class SpawnHub
 {
 	const float TELEPORT_COOLDOWN = 10;
@@ -37,6 +39,31 @@ class SpawnHub
 
 	void SpawnHub()
 	{
+	//Establish our tables.
+    ref array<Object> objects = new array<Object>;
+    ref array<CargoBase> proxyCargos = new array<CargoBase>;
+    
+    //Check the players radius including cargos.
+    GetGame().GetObjectsAtPosition( "4121 0 14650", 50.0, objects, proxyCargos );
+    
+    if ( GetGame() && objects )
+    {
+        for ( int i = 0; i < objects.Count(); i++ )
+        {
+            //Handle Cleanup
+            Object item = objects.Get( i );
+            if ( item )
+            {
+                if ( item.IsWeapon() || item.IsClothing() || item.IsMeleeWeapon() || item.IsMagazine() )  //item.IsMan() && !item.IsAlive()
+                {    
+                    if ( objects.Count() >= 1 )
+                    {
+                        GetGame().ObjectDelete(item);
+                    }
+                }
+            }
+        }
+    }
 		
 	}
 	
@@ -54,11 +81,15 @@ class SpawnHub
 			
 			DoTeleport( "Cherno", "4132.42 352.4 14657.9", 4.7 );
 			DoTeleport( "Electro", "4132.97 352.45 14644.2", 4.7 );
+			DoTeleport( "East", "4138.68 352.4 14644.2", 4.7);
+			DoTeleport( "Random", "4138 352 14657.9", 4.7);
 		}
 	}
 	
 	void DoTeleport( string LocationName, vector HubLocation, float HubRadius )
 	{
+		PlayerBase player
+		EntityAI itemEnt;
 		ref array<Object> players = new array<Object>;
 		GetGame().GetObjectsAtPosition( HubLocation, HubRadius, players, NULL );
 		for ( int i = 0; i < players.Count(); i++ )
@@ -70,14 +101,30 @@ class SpawnHub
 				{    
 					if ( LocationName == "Cherno" )
 					{
-						player_ent.SetPosition( RandomCherno.GetRandomElement() );
+						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
+						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
+						player_ent.SetPosition( RandomCherno.GetRandomElement() );				
 					}
 					
 					if ( LocationName == "Electro" )
 					{
+						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
+						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
 						player_ent.SetPosition( RandomElectro.GetRandomElement() );
+						
 					}
-				}
+					if ( LocationName == "East" ) 
+					{
+						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
+						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
+						player_ent.SetPosition( RandomEast.GetRandomElement() );
+					}
+					if ( LocationName == "Random" )'
+					{
+						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
+						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
+						player_ent.SetPosition( RandomRando.GetRandomElement() );
+					}
 			}
 		}	
 	}

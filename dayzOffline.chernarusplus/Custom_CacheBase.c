@@ -285,29 +285,7 @@ class CustomEventsSurvival
 		{
 			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CreateFlareEnt, 8500, true, 5019.09, 3.95992, 2008.58, 2, -1.09999, -4.44645);
 			
-			/* Item_0_Pos = "5021.9 3.93442 2010.06";
-			Item_0_Axis = "0 0 0";
-			Item_0 = g_Game.CreateObject("Wreck_UH1Y", Item_0_Pos, false);
-			Item_0.SetOrientation(Item_0_Axis); */
 			
-			Item_1_Pos = "5021.9 3.93442 2010.06";
-			Item_1_Axis = "96.2432 0 0";
-			Item_1 = g_Game.CreateObject("Barrel_Blue", Item_1_Pos, false);
-			Item_1.SetOrientation(Item_1_Axis);
-			CreateContainrItems(Item_1);
-
-			Item_2_Pos = "5018.78 3.86853 2006.11";
-			Item_2_Axis = "-90.1345 0 0";
-			Item_2 = g_Game.CreateObject("Barrel_Green", Item_2_Pos, false);
-			Item_2.SetOrientation(Item_2_Axis);
-			CreateContainrItems(Item_2);
-
-			Item_3_Pos = "5016.79 3.96322 2009.79";
-			Item_3_Axis = "-109.642 0 0";
-			Item_3 = g_Game.CreateObject("Barrel_Yellow", Item_3_Pos, false);
-			Item_3.SetOrientation(Item_3_Axis);
-			CreateContainrItems(Item_3);
-
 			//Zombies
 			NUM_OF_EVENT_ZOMBIES = 25;
 			for ( i = 0; i < NUM_OF_EVENT_ZOMBIES; i++ )
@@ -315,7 +293,7 @@ class CustomEventsSurvival
 				g_Game.CreateObject(GrabRandomZombieClass().GetRandomElement(), Vector(Math.RandomFloatInclusive(4998, 5052), 0, Math.RandomFloatInclusive(1992, 2014)), false, true );
 			}
 
-			selected_event = "Balota Coastline Behind ATC!";
+			selected_event = "Balota airfield!";
 			cleanup_vector = Vector( 5021.9, 3.93442, 2010.06 );
 			cleanup_radius = 250.0;
 			NoCleanUp = false;
