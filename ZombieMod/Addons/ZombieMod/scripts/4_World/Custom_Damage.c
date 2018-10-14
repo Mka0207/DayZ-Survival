@@ -7,6 +7,18 @@ modded class BleedingSourcesManager
 {
 	override void ProcessHit(float damage, string component, string ammo, vector modelPos)
 	{
+		if( m_BleedingSources.Contains(component) )
+		{
+			return;
+		}
+		float dmg_max = m_Player.GetMaxHealth(component, "Blood");
+		float dmg = damage;
+		float bleed_threshold = GetGame().ConfigGetFloat( "CfgAmmo " + ammo + " DamageApplied " + "bleedThreshold" );
+		if ( dmg > (dmg_max * (1 - bleed_threshold)) )
+		{
+			AddBleedingSource(component ,modelPos );
+		}
+		
 		string ammo_type; 
 		GetGame().ConfigGetText( "CfgAmmo " + ammo + " DamageApplied " + "type", ammo_type );
 	
