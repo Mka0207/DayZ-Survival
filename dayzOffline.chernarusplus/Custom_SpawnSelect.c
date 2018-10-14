@@ -1,44 +1,39 @@
 //Custom spawn point select
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnPoints.c"
 
-
-/* TVectorArray RandomCherno = ChernoSpawns();
-const float TELEPORT_COOLDOWN = 10;
-protected float    m_TeleportCheckTimer = 0.0;
-
-void OnPlayerTeleportTick(PlayerBase player, float curTime)
-{
-    m_TeleportCheckTimer += curTime;    
-    if ( m_TeleportCheckTimer > TELEPORT_COOLDOWN )
-    {
-        m_TeleportCheckTimer = 0;
-        ref array<Object> players = new array<Object>;
-		
-		GetGame().GetObjectsAtPosition( Vector(4132.42, 352.4, 14657.9), 4.7, players, NULL );
-		for ( int i = 0; i < players.Count(); i++ )
-		{
-			Object player_ent = players.Get( i );
-			if ( player_ent ) 
-			{
-				if ( player_ent.IsMan() )
-				{    
-					player_ent.SetPosition( RandomCherno.GetRandomElement() );
-				}
-			}
-		}
-    }
-} */
 TVectorArray RandomCherno = ChernoSpawns();
 TVectorArray RandomElectro = ElectroSpawns();
 TVectorArray RandomEast = EastSpawns();
 TVectorArray RandomRando = RandoSpawns();
+
 class SpawnHub
 {
 	const float TELEPORT_COOLDOWN = 10;
+	const float TELEPORT_COOLDOWN_DELAY = 12;
+	
 	protected float m_TeleportCheckTimer = 0.0;
+	protected float m_TeleportCheckTimerDelay = 0.0;
+	
+	const float HUB_RADIUS = 4.7;
+	
+	string NAME_CHERNO = "Cherno";
+	string NAME_ELECTRO = "Electro";
+	string NAME_EAST = "East";
+	string NAME_RANDOM = "Random";
+	
+	vector CHERNO_HUB = "4132.42 352.4 14657.9";
+	vector ELECTRO_HUB = "4132.97 352.45 14644.2";
+	vector EAST_HUB = "4138.68 352.4 14644.2";
+	vector RANDOM_HUB = "4138 352 14657.9";
+	
+	PlayerBase Players_Cherno;
+	PlayerBase Players_Electro;
+	PlayerBase Players_East;
+	PlayerBase Players_Random;
 
 	void SpawnHub()
 	{
+		
 	}
 	
 	void ~SpawnHub()
@@ -48,15 +43,41 @@ class SpawnHub
 	
 	void OnHubTick(float curTime)
 	{
-		m_TeleportCheckTimer += curTime;    
+		m_TeleportCheckTimer += curTime; 
+		m_TeleportCheckTimerDelay += curTime;  
+  		
 		if ( m_TeleportCheckTimer > TELEPORT_COOLDOWN )
 		{
-			m_TeleportCheckTimer = 0;
+			Players_Cherno = GetPlayersToTeleport( NAME_CHERNO, CHERNO_HUB, HUB_RADIUS );
+			GiveStuff( Players_Cherno );
 			
-			DoTeleport( "Cherno", "4132.42 352.4 14657.9", 4.7 );
-			DoTeleport( "Electro", "4132.97 352.45 14644.2", 4.7 );
-			DoTeleport( "East", "4138.68 352.4 14644.2", 4.7);
-			DoTeleport( "Random", "4138 352 14657.9", 4.7);
+			Players_Electro = GetPlayersToTeleport( NAME_ELECTRO, ELECTRO_HUB, HUB_RADIUS );
+			GiveStuff( Players_Electro );
+			
+			Players_East = GetPlayersToTeleport( NAME_EAST, EAST_HUB, HUB_RADIUS );
+			GiveStuff( Players_East );
+			
+			Players_Random = GetPlayersToTeleport( NAME_RANDOM, RANDOM_HUB, HUB_RADIUS );
+			GiveStuff( Players_Random );
+			
+			m_TeleportCheckTimer = 0;
+		}
+		
+		if ( m_TeleportCheckTimerDelay > TELEPORT_COOLDOWN_DELAY )
+		{
+			PlayerBase Players_Cherno = GetPlayersToTeleport( NAME_CHERNO, CHERNO_HUB, HUB_RADIUS );
+			SendPlayer( Players_Cherno, NAME_CHERNO );
+			
+			PlayerBase Players_Electro = GetPlayersToTeleport( NAME_ELECTRO, ELECTRO_HUB, HUB_RADIUS );
+			SendPlayer( Players_Electro, NAME_ELECTRO );
+			
+			PlayerBase Players_East = GetPlayersToTeleport( NAME_EAST, EAST_HUB, HUB_RADIUS );
+			SendPlayer( Players_East, NAME_EAST );
+			
+			PlayerBase Players_Random = GetPlayersToTeleport( NAME_RANDOM, RANDOM_HUB, HUB_RADIUS );
+			SendPlayer( Players_Random, NAME_RANDOM );
+			
+			m_TeleportCheckTimerDelay = 0;
 		}
 	}
 	
@@ -88,10 +109,11 @@ class SpawnHub
 		ply.GetInventory().CreateInInventory("Compass");
 	}
 	
-	void DoTeleport( string LocationName, vector HubLocation, float HubRadius )
+	PlayerBase GetPlayersToTeleport( string LocationName, vector HubLocation, float HubRadius )
 	{
 		ref array<Object> players = new array<Object>;
 		GetGame().GetObjectsAtPosition( HubLocation, HubRadius, players, NULL );
+		PlayerBase player;
 		
 		for ( int i = 0; i < players.Count(); i++ )
 		{
@@ -100,36 +122,12 @@ class SpawnHub
 			{
 				if ( obj_ent.IsMan() )
 				{    
-					PlayerBase player = PlayerBase.Cast( obj_ent );
-					if ( LocationName == "Cherno" )
-					{
-						player.IsInHub = false;
-						GiveStuff( player );
-						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "Cherno" );						
-					}
-					
-					if ( LocationName == "Electro" )
-					{
-						player.IsInHub = false;
-						GiveStuff( player );
-						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "Electro" );
-						
-					}
-					if ( LocationName == "East" ) 
-					{
-						player.IsInHub = false;
-						GiveStuff( player );
-						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "East" );
-					}
-					if ( LocationName == "Random" )
-					{
-						player.IsInHub = false;
-						GiveStuff( player );
-						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "Random" );
-					}
+					player = PlayerBase.Cast( obj_ent );
 				}
 			}
 		}	
+		
+		return player;
 	}
 }
 
