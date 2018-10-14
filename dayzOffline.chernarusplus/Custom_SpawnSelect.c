@@ -39,32 +39,6 @@ class SpawnHub
 
 	void SpawnHub()
 	{
-	//Establish our tables.
-    ref array<Object> objects = new array<Object>;
-    ref array<CargoBase> proxyCargos = new array<CargoBase>;
-    
-    //Check the players radius including cargos.
-    GetGame().GetObjectsAtPosition( "4121 0 14650", 50.0, objects, proxyCargos );
-    
-    if ( GetGame() && objects )
-    {
-        for ( int i = 0; i < objects.Count(); i++ )
-        {
-            //Handle Cleanup
-            Object item = objects.Get( i );
-            if ( item )
-            {
-                if ( item.IsWeapon() || item.IsClothing() || item.IsMeleeWeapon() || item.IsMagazine() )  //item.IsMan() && !item.IsAlive()
-                {    
-                    if ( objects.Count() >= 1 )
-                    {
-                        GetGame().ObjectDelete(item);
-                    }
-                }
-            }
-        }
-    }
-		
 	}
 	
 	void ~SpawnHub()
@@ -86,45 +60,74 @@ class SpawnHub
 		}
 	}
 	
+	void SendPlayer( PlayerBase entity, string LocationStuff )
+	{
+		if ( LocationStuff == "Cherno" )
+		{
+			entity.SetPosition( RandomCherno.GetRandomElement() );
+		}
+		if ( LocationStuff == "Electro" )
+		{
+			entity.SetPosition( RandomElectro.GetRandomElement() );
+		}
+		if ( LocationStuff == "East" )
+		{
+			entity.SetPosition( RandomEast.GetRandomElement() );
+		}
+		if ( LocationStuff == "Random" )
+		{
+			entity.SetPosition( RandomRando.GetRandomElement() );
+		}
+	}
+	
+	void GiveStuff( PlayerBase ply )
+	{
+		EntityAI itemEnt;
+		itemEnt = ply.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
+		ply.GetInventory().CreateInInventory("MakarovIJ70");
+		ply.GetInventory().CreateInInventory("Compass");
+	}
+	
 	void DoTeleport( string LocationName, vector HubLocation, float HubRadius )
 	{
-		PlayerBase player
-		EntityAI itemEnt;
 		ref array<Object> players = new array<Object>;
 		GetGame().GetObjectsAtPosition( HubLocation, HubRadius, players, NULL );
+		
 		for ( int i = 0; i < players.Count(); i++ )
 		{
-			Object player_ent = players.Get( i );
-			if ( player_ent ) 
+			Object obj_ent = players.Get( i );
+			if ( obj_ent ) 
 			{
-				if ( player_ent.IsMan() )
+				if ( obj_ent.IsMan() )
 				{    
+					PlayerBase player = PlayerBase.Cast( obj_ent );
 					if ( LocationName == "Cherno" )
 					{
-						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
-						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
-						player_ent.SetPosition( RandomCherno.GetRandomElement() );				
+						player.IsInHub = false;
+						GiveStuff( player );
+						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "Cherno" );						
 					}
 					
 					if ( LocationName == "Electro" )
 					{
-						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
-						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
-						player_ent.SetPosition( RandomElectro.GetRandomElement() );
+						player.IsInHub = false;
+						GiveStuff( player );
+						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "Electro" );
 						
 					}
 					if ( LocationName == "East" ) 
 					{
-						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
-						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
-						player_ent.SetPosition( RandomEast.GetRandomElement() );
+						player.IsInHub = false;
+						GiveStuff( player );
+						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "East" );
 					}
-					if ( LocationName == "Random" )'
+					if ( LocationName == "Random" )
 					{
-						itemEnt = player.GetInventory().CreateInInventory("Mag_IJ70_8Rnd");
-						itemEnt = player.GetInventory().CreateInInventory("MakarovIJ70");
-						player_ent.SetPosition( RandomRando.GetRandomElement() );
+						player.IsInHub = false;
+						GiveStuff( player );
+						GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater( SendPlayer, 2000, false, player, "Random" );
 					}
+				}
 			}
 		}	
 	}
@@ -189,7 +192,7 @@ void AddSpawnStuff()
     vector spwn3_dir;
    
     spwn3_pos[0] = 4132.42;
-    spwn3_pos[1] = 352.399;
+    spwn3_pos[1] = 354.5;
     spwn3_pos[2] = 14657.9;
  
     spwn3_dir[0] = 0;
@@ -200,6 +203,7 @@ void AddSpawnStuff()
 	m_spwn3.SetOrientation(spwn3_dir);
 	m_spwn3.GetCompEM().SwitchOn();	 
 	m_spwn3.SetTakeable(false);
+	m_spwn3.SetPosition(spwn3_pos);
 	
 	
 	//Blue shed	
@@ -253,7 +257,7 @@ void AddSpawnStuff()
     vector spwn6_dir;
    
     spwn6_pos[0] = 4132.31;
-    spwn6_pos[1] = 352.315;
+    spwn6_pos[1] = 354.315;
     spwn6_pos[2] = 14644.8;
  
     spwn6_dir[0] = 0;
@@ -264,6 +268,7 @@ void AddSpawnStuff()
 	m_spwn6.SetOrientation(spwn6_dir);
 	m_spwn6.GetCompEM().SwitchOn();
 	m_spwn6.SetTakeable(false);
+	m_spwn6.SetPosition(spwn6_pos);
 	
 	 
 	
@@ -318,7 +323,7 @@ void AddSpawnStuff()
     vector spwn9_dir;
    
     spwn9_pos[0] = 4140.33;
-    spwn9_pos[1] = 352.529;
+    spwn9_pos[1] = 354.529;
     spwn9_pos[2] = 14645;
  
     spwn9_dir[0] = 0;
@@ -329,6 +334,7 @@ void AddSpawnStuff()
 	m_spwn9.SetOrientation(spwn9_dir);
 	m_spwn9.GetCompEM().SwitchOn(); 
 	m_spwn9.SetTakeable(false);
+	m_spwn9.SetPosition(spwn9_pos);
 	
 	
 	//Yellow (random) shed
@@ -359,7 +365,7 @@ void AddSpawnStuff()
     vector spwn11_dir;
    
     spwn11_pos[0] = 4139.38;
-    spwn11_pos[1] = 352.467;
+    spwn11_pos[1] = 354.467;
     spwn11_pos[2] = 14656.7;
  
     spwn11_dir[0] = 0;
@@ -370,6 +376,7 @@ void AddSpawnStuff()
 	m_spwn11.SetOrientation(spwn11_dir);
 	m_spwn11.GetCompEM().SwitchOn();
 	m_spwn11.SetTakeable(false);
+	m_spwn11.SetPosition(spwn11_pos);
 	
 	
 
