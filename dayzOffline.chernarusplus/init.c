@@ -1,8 +1,4 @@
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnSelect.c"
-//#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_SpawnPoints.c"
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_Buildings.c"
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_Adverts.c"
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Custom_CacheBase.c"
 void main()
 {
 
@@ -35,7 +31,7 @@ void main()
 	ref array<Object> objects = new array<Object>;
 	ref array<CargoBase> proxyCargos = new array<CargoBase>;
 	
-	//Check the players radius including cargos.
+	//Delete any chemlights that persisted past restart
 	GetGame().GetObjectsAtPosition( "4121 0 14650", 50.0, objects, proxyCargos );
 	
 	if ( GetGame() && objects )
@@ -56,9 +52,6 @@ void main()
 			}
 		}
 	}
-		
-	AddBuildings();
-	AddSpawnStuff();
 }
 
 class CustomMission: MissionServer
@@ -92,19 +85,7 @@ class CustomMission: MissionServer
 	
 	override void StartingEquipSetup(PlayerBase player, bool clothesChosen)
 	{
-/*
-		player.RemoveAllItems();
 
-		EntityAI item = player.GetInventory().CreateInInventory(topsArray.GetRandomElement());
-		EntityAI item2 = player.GetInventory().CreateInInventory(pantsArray.GetRandomElement());
-		EntityAI item3 = player.GetInventory().CreateInInventory(shoesArray.GetRandomElement());
-*/
-/* 		EntityAI itemEnt;
-		ItemBase itemBs;
-		Magazine mag = player.GetHumanInventory().CreateInInventory("Mag_IJ70_8Rnd");
-		Weapon wpn = player.GetHumanInventory().CreateInHands("MakarovIJ70");
-		player.GetWeaponManager().AttachMagazine(mag);
-		player.GetInventory().CreateInInventory("StoneKnife"); */
 		
 		EntityAI itemEnt;
 		ItemBase itemBs;
