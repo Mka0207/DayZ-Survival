@@ -175,6 +175,7 @@ void AddSpawnStuff()
 	m_spwn22 = g_Game.CreateObject("Armband_Green", spwn2_pos, false);	
 	m_spwn2.SetOrientation(spwn2_dir);
 	m_spwn2.GetCompEM().SwitchOn();
+	m_spwn2.GetCompEM().SetEnergy(15400);
 	m_spwn2.SetPosition(spwn2_pos); 
 	m_spwn22.SetPosition(spwn2_pos); 
 	m_spwn2.SetTakeable(false);
@@ -200,6 +201,7 @@ void AddSpawnStuff()
 	m_spwn3 = g_Game.CreateObject("Chemlight_Green", spwn3_pos, false);
 	m_spwn3.SetOrientation(spwn3_dir);
 	m_spwn3.GetCompEM().SwitchOn();	 
+	m_spwn3.GetCompEM().SetEnergy(15400);
 	m_spwn3.SetTakeable(false);
 	m_spwn3.SetPosition(spwn3_pos);
 	
@@ -243,6 +245,7 @@ void AddSpawnStuff()
 	m_spwn55 = g_Game.CreateObject("Armband_Blue", spwn5_pos, false);
 	m_spwn5.SetOrientation(spwn2_dir);
 	m_spwn5.GetCompEM().SwitchOn();
+	m_spwn5.GetCompEM().SetEnergy(15400);
 	m_spwn5.SetPosition(spwn5_pos);
 	m_spwn55.SetPosition(spwn5_pos);
 	m_spwn5.SetTakeable(false);
@@ -265,6 +268,7 @@ void AddSpawnStuff()
 	m_spwn6 = g_Game.CreateObject("Chemlight_Blue", spwn6_pos, false);
 	m_spwn6.SetOrientation(spwn6_dir);
 	m_spwn6.GetCompEM().SwitchOn();
+	m_spwn6.GetCompEM().SetEnergy(15400);
 	m_spwn6.SetTakeable(false);
 	m_spwn6.SetPosition(spwn6_pos);
 	
@@ -309,6 +313,7 @@ void AddSpawnStuff()
 	m_spwn88 = g_Game.CreateObject("Armband_Red", spwn8_pos, false);	
 	m_spwn8.SetOrientation(spwn2_dir);
 	m_spwn8.GetCompEM().SwitchOn();
+	m_spwn8.GetCompEM().SetEnergy(15400);
 	m_spwn8.SetPosition(spwn8_pos); 
 	m_spwn88.SetPosition(spwn8_pos); 
 	m_spwn8.SetTakeable(false);
@@ -331,6 +336,7 @@ void AddSpawnStuff()
 	m_spwn9 = g_Game.CreateObject("Chemlight_Red", spwn9_pos, false);
 	m_spwn9.SetOrientation(spwn9_dir);
 	m_spwn9.GetCompEM().SwitchOn(); 
+	m_spwn9.GetCompEM().SetEnergy(15400);
 	m_spwn9.SetTakeable(false);
 	m_spwn9.SetPosition(spwn9_pos);
 	
@@ -373,6 +379,7 @@ void AddSpawnStuff()
 	m_spwn11 = g_Game.CreateObject("Chemlight_Yellow", spwn11_pos, false);
 	m_spwn11.SetOrientation(spwn11_dir);
 	m_spwn11.GetCompEM().SwitchOn();
+	m_spwn11.GetCompEM().SetEnergy(15400);
 	m_spwn11.SetTakeable(false);
 	m_spwn11.SetPosition(spwn11_pos);
 	
