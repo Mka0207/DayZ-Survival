@@ -6,4 +6,3 @@ Release of FWKZT Survival's mission/mod. We are taking a break from server hosti
 All of this is released as-is. You are welcome to contact us with any issues, but don't count on a response.
 
 
-test
